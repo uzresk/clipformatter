@@ -16,6 +16,7 @@ import prettyprint.formatter.FormatterException;
 
 import com.sun.org.apache.xml.internal.serializer.OutputPropertiesFactory;
 
+@SuppressWarnings("restriction")
 public class XmlFormatter implements Formatter {
 
 	private static final int INDENT = 4;
@@ -28,6 +29,11 @@ public class XmlFormatter implements Formatter {
 
 	@Override
 	public String format() throws FormatterException {
+
+		// trim whitespace
+		xml = xml.replaceAll(">\\s*<", "><");
+
+		System.out.println(xml);
 
 		String formatStr = "";
 		try {
