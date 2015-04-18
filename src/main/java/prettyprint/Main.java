@@ -9,7 +9,6 @@ import java.io.IOException;
 
 import prettyprint.formatter.Formatter;
 import prettyprint.formatter.FormatterException;
-import prettyprint.formatter.FormatterFactory;
 
 public class Main {
 
@@ -27,8 +26,8 @@ public class Main {
 			if (clipboard == null || "".equals(clipboard)) {
 				return;
 			}
-			Formatter formatter = FormatterFactory.getFormatter(clipboard);
-			formatStr = formatter.format();
+			formatStr = Formatter.generate(clipboard).format();
+
 		} catch (FormatterException e) {
 			formatStr = e.getMessage();
 		} catch (RuntimeException e) {
